@@ -1,45 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react'
+import { View ,Text,Button} from 'react-native'
+import axios from 'axios'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+
+  function fetchData (){
+  axios
+  .get('https://jsonplaceholder.typicode.com/users')
+  .then((response)=>console.log(response))
+  .catch((error)=>console.log(error))
+  }
 
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
+     <SafeAreaView>
+      <View>
+        <Text>Hello Api</Text>
+        <Text>Hello Api</Text>
+        <Text>Hello Api</Text>
+        <Button title='Fetch Data' onPress={fetchData}/>
+        </View>
+     </SafeAreaView>
+    
+  )
 }
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
 
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
