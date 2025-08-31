@@ -6,11 +6,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 function App() {
 
-  function fetchData (){
-  axios
-  .get('https://jsonplaceholder.typicode.com/users')
-  .then((response)=>console.log(response))
-  .catch((error)=>console.log(error))
+  async function fetchData (){
+  try {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users')
+    console.log(response)
+  }catch(error){
+      console.log(error)
+    }
+    
+     
+  
+
   }
 
   return (
