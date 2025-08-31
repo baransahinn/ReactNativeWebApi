@@ -17,8 +17,6 @@ function App() {
      <SafeAreaView>
       <View>
         <Text>Hello Api</Text>
-        <Text>Hello Api</Text>
-        <Text>Hello Api</Text>
         <Button title='Fetch Data' onPress={fetchData}/>
         </View>
      </SafeAreaView>
