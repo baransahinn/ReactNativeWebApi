@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View ,Text,Button,FlatList, ListRenderItem,ActivityIndicator} from 'react-native'
 import axios from 'axios'
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -27,6 +27,10 @@ function App() {
     }
   }
   const renderUser:ListRenderItem<ApiUser> = ({item})=><UserCards name={item.name} email={item.email} username={item.username} />
+  
+  useEffect(()=>{
+    fetchData();
+  },[])
 
   return (
      <SafeAreaView>
@@ -39,8 +43,7 @@ function App() {
         renderItem={renderUser}
         />)
         }
-        
-        <Button title='Fetch Data' onPress={fetchData}/>
+        {/* <Button title='Fetch Data' onPress={fetchData}/> */}
         </View>
      </SafeAreaView>
     
